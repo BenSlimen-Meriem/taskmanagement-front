@@ -1,0 +1,10 @@
+<form (ngSubmit)="saveTaskList()">
+    <label for="listName">Nom de la liste:</label>
+    <input type="text" id="listName" name="listName" [(ngModel)]="listName" required pattern="[A-Za-z]+">
+    
+    <label for="taskDescription">Tâche:</label>
+    <input type="text" id="taskDescription" name="taskDescription" [(ngModel)]="taskDescription">
+    <button (click)="addTask()">Ajouter</button>
+    
+    <button type="submit">Sauvegarder</button>
+  </form>

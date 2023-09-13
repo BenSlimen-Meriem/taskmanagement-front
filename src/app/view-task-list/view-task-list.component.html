@@ -1,0 +1,12 @@
+<form (ngSubmit)="getTaskListById()">
+    <label for="listId">ID de la liste:</label>
+    <input type="text" id="listId" name="listId" [(ngModel)]="listId">
+    <button type="submit">Chercher</button>
+  </form>
+  
+  <div *ngIf="taskList">
+    <h2>{{ taskList.name }}</h2>
+    <ul>
+      <li *ngFor="let task of taskList.tasks">{{ task }}</li>
+    </ul>
+  </div>
