@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { TaskListService } from '../services/task-list.service';
+import { Task } from '../models/task';
+import { TaskService } from '../services/task.service';
+import { ListTask } from '../models/list-task';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-task-list',
@@ -10,26 +14,39 @@ export class CreateTaskListComponent {
 
   listName: string = '';
   taskDescription: string = '';
-  tasks: string[] = [];
+  listtasks: Task[] = [];
+  task: Task = new Task();
+  listtask: ListTask = new ListTask();
 
-  constructor(private taskListService: TaskListService) {}
+  constructor(private taskListService: TaskListService,
+    private taskService: TaskService,
+    private router: Router) {}
 
-  addTask() {
-    if (this.taskDescription) {
-      this.tasks.push(this.taskDescription);
-      this.taskDescription = '';
-    }
+ 
+    ajouttask(): void {
+  
+      this.taskService.createTask(this.task)
+          .subscribe({
+            next: (res) => {
+              console.log(this.task.description);
+              this.listtasks.push(res)
+              console.log(this.listtasks);
+              this.task.description = '';
+            },
+          });
+       
   }
 
-  saveTaskList() {
-    const taskList = {
-      name: this.listName,
-      tasks: this.tasks
-    };
-    this.taskListService.createTaskList(taskList).subscribe((response: any) => {
-      const uniqueId = response.id;
-      // Rediriger vers la page d'accueil ou afficher un message de succès.
-    });
-  }
-
+  ajouterlist() {
+    
+  this.listtask.tasks=this.listtasks;
+  this.taskListService.createTaskList(this.listtask)
+          .subscribe({
+            next: (res) => {
+              console.log(this.listtask);
+              alert('ID de la liste ' + res.name  + ' est ' + res.id)
+              this.router.navigate(['/'])
+            },
+          });
+        }
 }

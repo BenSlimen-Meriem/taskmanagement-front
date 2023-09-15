@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TaskListService } from '../services/task-list.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-view-task-list',
@@ -8,14 +9,20 @@ import { TaskListService } from '../services/task-list.service';
 })
 export class ViewTaskListComponent {
 
-  listId: number = 0;
+  listId!: number;
   taskList: any;
 
   constructor (private taskListService: TaskListService) {}
 
-  getTaskListById() {
-    this.taskListService.getTaskListById(this.listId).subscribe((response: any) => {
-      this.taskList = response;
+  findTaskListById() {
+    this.taskListService.findTaskListById(this.listId).subscribe((response: any) => {
+      console.log('response = ', response)
+      if(response !== null){
+        this.taskList = response;
+      } else {
+        alert('Pas de liste trouvée avec ID ' + this.listId)
+      }
+      
     });
   }
 }

@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+    padding: 20px;
+}
+.row {
+    text-align: center;
+}
+
+.form-group{
+    text-align: center;
+}
+label{
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+input[type="text"]{  
+    padding: 5px;
+}
+h1 {
+    margin-bottom: 50px;
+    font-size: 50px;
+    font-weight: bolder;
+    color: brown;
+  }
+
+button{
+    margin-left: 10px;
+    height: 40px;
+    border-radius: 10px;
+  }
+  h2{
+    color: green;
+    font-weight: bolder;
+    margin: 50px;
+  }
+  ul {
+    list-style-type: none; /* Supprime les puces par défaut */
+    
+  }
+ 

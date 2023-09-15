@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+    padding: 20px;
+}
+.row {
+    text-align: center;
+}
+/*form{
+    width: 500px;
+}*/
+label{
+    margin-bottom: 10px; 
+    width: auto;
+    font-size: 20px;
+    font-weight: bold;
+}
+input[type="text"]{
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 30px;
+}
+h1 {
+    margin-bottom: 50px;
+    font-size: 50px;
+    font-weight: bolder;
+    color: brown;
+  }
+  .btn-ajout{
+    margin-left: 10px;
+  }
+button{
+    height: 40px;
+    border-radius: 10px;
+  }
