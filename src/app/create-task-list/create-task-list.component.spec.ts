@@ -42,36 +42,33 @@ describe('CreateTaskListComponent', () => {
   });
 
   it('should add a task', async() => {
-    // Arrange
+ 
     const task = new Task();
     task.description = 'Sample Task';
     taskService.createTask.and.returnValue(of(task));
 
-    // Act
+  
     component.task.description = 'Sample Task';
     
     component.ajouttask();
-    
-
-    // Assert
+  
     const result = await (component.listtasks.length)
     expect(result).toBe(1);
   });
 
   it('should create a task list', async() => {
-    // Arrange
+    
     const taskList = new ListTask();
     taskList.name = 'Sample List';
     taskList.id = 1;
     taskList.tasks = [new Task()];
     taskListService.createTaskList.and.returnValue(of(taskList));
 
-    // Act
+ 
     component.listtask.name = 'Sample List';
     component.listtasks = [new Task()];
     component.ajouterlist();
 
-    // Assert
     const result=(router.navigate);
     expect(result).toHaveBeenCalledWith(['/']);
   });

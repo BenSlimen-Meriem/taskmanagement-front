@@ -11,10 +11,7 @@ export class TaskListService {
   private apiUrl = 'http://localhost:8080/api/v1/list';
 
   constructor(private http: HttpClient) {}
-
-  /*createTaskList(taskList: any) {
-    return this.http.post('this.apiUrl/create', taskList);
-  }*/
+  
   public createTaskList(listTask: ListTask): Observable<ListTask> {
     return this.http.post<ListTask>(`${this.apiUrl}/create`, listTask);
   }
